@@ -1,7 +1,8 @@
 import "./App.css";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import ContactForm from "./components/ContactForm";
+import Gallery from "./components/Gallery";
+import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 
 function App() {
@@ -16,11 +17,8 @@ function App() {
     <div className="app">
       <Header onNavClick={scrollTo} />
       <Hero onContactClick={() => scrollTo("contact")} />
-      <main>
-        <section id="contact" className="section section--muted">
-          <ContactForm />
-        </section>
-      </main>
+      <Gallery />
+      <ContactSection />
       <Footer />
     </div>
   );

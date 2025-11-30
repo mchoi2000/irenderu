@@ -2,8 +2,9 @@
 import React from "react";
 
 const NAV_ITEMS = [
-  { id: "home", label: "HOME" },
-  { id: "contact", label: "CONTACT" },
+  { id: "home", label: "home" },
+  { id: "gallery", label: "gallery" },
+  { id: "contact", label: "contact" },
 ];
 
 function Header({ onNavClick }) {
