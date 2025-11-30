@@ -95,7 +95,7 @@ body {
 
 /* hover */
 .header__nav-item:hover {
-  color: #3a3734;
+  color: var(--primary-dark);
   transform: translateY(-1px);
 }
 
@@ -311,7 +311,7 @@ body {
 }
 
 .section--muted {
-  background: #ebe4dd;
+  background: var(--primary-soft);
 }
 
 .section__inner {
@@ -554,125 +554,6 @@ body {
   align-items: start;
 }
 
-
-/* ================================
-   CONNECT FORM FIELDS
-================================ */
-
-.connect-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
-  max-width: 480px;
-}
-
-.connect-form__field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.connect-form__field span {
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
-  color: #6F685F;            /* 한 톤 더 선명한 taupe */
-  font-weight: 500;
-}
-
-.connect-form__field input,
-.connect-form__field textarea {
-  padding: 0.85rem 1rem;
-  border-radius: 6px;
-
-  border: 1px solid #7D766E;               /* 더 진하고 분명한 tone */
-  background: rgba(255, 255, 255, 0.6);
-  color: #514C46;                           /* 더 읽기 좋은 텍스트 */
-
-  font-size: 0.9rem;
-  transition:
-    border-color 200ms ease,
-    background-color 200ms ease,
-    box-shadow 200ms ease;
-}
-
-.connect-form__field input:focus,
-.connect-form__field textarea:focus {
-  outline: none;
-  background: rgba(255, 255, 255, 0.75);
-  border-color: #5E5852;
-  box-shadow: 0 0 0 3px rgba(94, 88, 82, 0.18);
-}
-
-
-/* ================================
-   SUBMIT BUTTON
-================================ */
-
-.connect-form__submit {
-  align-self: flex-start;
-  padding: 0.85rem 2.4rem;
-
-  border-radius: 999px;
-
-  background: transparent;
-  border: 1px solid #6F685F;     /* 텍스트 색과 맞추기 */
-  color: #6F685F;
-
-  font-size: 0.8rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-
-  cursor: pointer;
-
-  transition:
-    background-color 1100ms cubic-bezier(0.25, 0.8, 0.25, 1),
-    color 1100ms cubic-bezier(0.25, 0.8, 0.25, 1),
-    border-color 1100ms cubic-bezier(0.25, 0.8, 0.25, 1),
-    transform 450ms ease-out,
-    box-shadow 900ms ease-out,
-    opacity 200ms ease-out;
-}
-
-.connect-form__submit:hover:not(:disabled) {
-  background-color: #6F685F;
-  color: #F7F5F1;
-  border-color: #6F685F;
-
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
-}
-
-.connect-form__submit:active:not(:disabled) {
-  background-color: #5A544E;
-  border-color: #5A544E;
-  transform: translateY(0);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
-}
-
-.connect-form__submit:disabled {
-  opacity: 0.5;
-  cursor: default;
-  box-shadow: none;
-}
-
-
-/* ================================
-   STATUS MESSAGES
-================================ */
-
-.connect-form__status {
-  margin-top: 0.4rem;
-  font-size: 0.85rem;
-  letter-spacing: 0.02em;
-}
-
-.connect-form__status--ok {
-  color: #4A6F4F;
-}
-
-.connect-form__status--error {
-  color: #B04A4A;
-}
 
 /* =========================================
    Footer

@@ -15,6 +15,22 @@ body,
   height: 100%;
 }
 
+:root {
+  --bg: #F5F6F7;
+  --text: #2A2D33;
+
+  --primary: #4B5563;
+  --primary-light: #E5E7EB;
+  --primary-dark: #374151;
+
+  --border: #D1D5DB;
+  --focus: rgba(75, 85, 99, 0.35);
+
+  --radius: 14px;
+  --shadow-soft: 0 4px 18px rgba(0, 0, 0, 0.08);
+  --shadow-focus: 0 0 0 3px rgba(75, 85, 99, 0.25);
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   background: #f4f1ed;

@@ -3,8 +3,6 @@ import React from "react";
 
 const NAV_ITEMS = [
   { id: "home", label: "HOME" },
-  { id: "about", label: "ABOUT" },
-  { id: "services", label: "STUDIO" },
   { id: "contact", label: "CONTACT" },
 ];
 
