@@ -1,0 +1,716 @@
+/* =========================================
+   Global Layout
+========================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  background: #f4f1ed;
+  color: #25211d;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+  height: 72px;
+  padding-left: 3vw;
+  padding-right: 2.3vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+
+  /* 👇 여기서부터 sticky 설정 */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  /* 선택: 살짝 유리 느낌 주고 싶으면 */
+  backdrop-filter: blur(8px);
+}
+
+.header__brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.84rem;
+}
+
+.header__brand-main {
+  font-weight: 600;
+}
+
+.header__brand-sep {
+  opacity: 0.5;
+}
+
+.header__brand-sub {
+  font-weight: 400;
+}
+
+/* =========================================
+   HEADER NAV — DESKTOP & MOBILE FINAL
+   (이 블록을 App.css 제일 아래에 둬줘)
+========================================= */
+
+/* NAV: 오른쪽 끝으로 붙이기 */
+.header__nav {
+  display: flex;
+  align-items: center;
+  margin-left: auto;      /* 👈 오른쪽으로 밀기 */
+}
+
+/* NAV ITEM — 데스크탑 공통 스타일 */
+.header__nav-item {
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #a7a097;
+
+  padding: 0.4rem 0.35rem;
+  position: relative;
+  transition: color 200ms ease, transform 180ms ease;
+}
+
+/* hover */
+.header__nav-item:hover {
+  color: #3a3734;
+  transform: translateY(-1px);
+}
+
+/* 가운데 divider — 마지막 item 제외 */
+.header__nav-item::after {
+  content: "|";
+  margin-left: 0.45rem;
+  color: #b8b2ad;
+}
+
+.header__nav-item:last-child::after {
+  content: "";
+}
+
+
+/* =========================================
+   MOBILE NAV — refined spacing, divider
+========================================= */
+@media (max-width: 768px) {
+  .header__nav {
+    display: flex !important;
+    align-items: center;
+    margin-left: auto;             /* 오른쪽 끝으로 배치 */
+  }
+
+  .header__nav-item {
+    display: none !important;      /* 기본 메뉴 숨김 */
+    padding: 0.32rem 0.4rem;
+  }
+
+  /* HOME + CONNECT 표시 */
+  .header__nav-item[data-nav="home"],
+  .header__nav-item[data-nav="connect"] {
+    display: inline-flex !important;
+    align-items: center;
+    padding: 0;
+  }
+
+  /* divider (|) */
+  .header__nav-item[data-nav="home"]::after {
+    content: "|";
+    margin: 0 0.45rem;            /* divider 간격 */
+    color: #8A8682;               /* 미묘하고 고급스러운 은은한 색 */
+    font-size: 0.8rem;
+    line-height: 1;
+  }
+}
+
+/* 아주 작은 화면에서도 유지 */
+@media (max-width: 480px) {
+  .header__nav {
+    padding-right: 1rem;
+    gap: 0.15rem;
+  }
+
+  .header__nav-item[data-nav="home"],
+  .header__nav-item[data-nav="connect"] {
+    font-size: 0.76rem;
+  }
+
+  .header__nav-item[data-nav="home"]::after {
+    margin: 0 0.35rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* =========================================
+   HERO (Fullscreen)
+========================================= */
+
+.hero {
+  position: relative;
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  height: calc(100vh - 72px);
+  min-height: 520px;
+  overflow: hidden;
+  background: #ccc;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 18, 25, 0.25),
+    rgba(15, 18, 25, 0.55)
+  );
+}
+
+.hero__content {
+  position: relative;
+  height: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 6vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  margin-top: -3vh;   /* ✨ 추가: 살짝 위로 띄워서 더 영화 같은 프레이밍 */
+}
+
+/* Hero eyebrow (TIMLESS DIGITAL STUDIO) */
+.hero__eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;              /* 🔹 살짝 더 넓게 */
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.82);    /* 🔹 살짝 덜 밝게 */
+  font-weight: 400;
+  margin-bottom: 1.8rem;               /* 🔹 여유 조금 더 */
+}
+
+.hero__title {
+  font-size: clamp(2.4rem, 5vw, 3.0rem);
+  font-weight: 300;          /* 🔹 200 → 300, 여전히 얇지만 더 안정적 */
+  line-height: 1.14;         /* 🔹 1.10 → 1.14, 숨이 조금 더 편해짐 */
+  letter-spacing: -0.01em;
+  color: #F7F5F1;
+  margin: 0.9rem 0 1.7rem;   /* 🔹 위·아래 여백 살짝 조정 */
+}
+
+.hero__subtitle {
+  font-size: 0.95rem;
+  line-height: 1.7;     /* 🔹 1.8 → 1.7 */
+  max-width: 32rem;
+  opacity: 0.9;         /* 🔹 0.92 → 0.9, 살짝 더 조용하게 */
+  margin-bottom: 2.3rem;
+}
+
+/* Hero primary button */
+.hero__button {
+  margin-top: 2.5rem;
+  padding: 0.78rem 2.6rem;                 /* 살짝 얇게 */
+  border-radius: 999px;
+  border: 1.4px solid rgba(255, 255, 255, 0.6); /* 테두리 투명도 낮춤 */
+  background: transparent;
+  color: #f7f3ee;
+
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 400;                        /* 500 → 400, 더 미니멀하게 */
+
+  cursor: pointer;
+  transition:
+    background-color 320ms ease,
+    color 320ms ease,
+    border-color 320ms ease,
+    transform 200ms ease;
+}
+
+.hero__button:hover {
+  background: rgba(247, 243, 238, 0.96);
+  color: #2f312f;
+  border-color: transparent;
+  transform: translateY(-1px);
+}
+
+.hero__button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 3px;
+}
+
+.hero__button:active {
+  background-color: #EFECE6;
+  border-color: #EFECE6;
+  transform: translateY(0);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+}
+
+@media (max-width: 768px) {
+  .hero__content {
+    padding: 0 1.6rem;        /* 좌우 여백 살짝 확보 */
+    margin-top: -1vh;         /* 데스크탑보다 살짝 덜 올림 */
+  }
+
+  .hero__title {
+    font-size: 1.9rem;        /* 살짝만 줄이기 */
+    line-height: 1.2;
+  }
+
+  .hero__subtitle {
+    font-size: 0.9rem;
+    max-width: 26rem;         /* 너무 옆으로 안 퍼지게 */
+  }
+
+  .hero__button {
+    margin-top: 2.1rem;
+  }
+}
+
+/* =========================================
+   SECTION BASE
+========================================= */
+
+.section {
+  padding: 4.8rem 6vw;
+}
+
+.section--light {
+  background: #f4f1ed;
+}
+
+.section--muted {
+  background: #ebe4dd;
+}
+
+.section__inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section__inner--split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.section__title {
+  font-size: 1.4rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  margin: 0 0 0.9rem;
+}
+
+.section__divider {
+  width: 100%;
+  max-width: 420px;
+  height: 1px;
+  background: #dcd7d3;
+  opacity: 0.5;
+  margin: 1rem 0 2.2rem 0;
+}
+
+.section__text {
+  font-size: 0.98rem;
+  line-height: 1.9;
+  color: #433c35;
+  margin-bottom: 1rem;
+}
+
+/* =========================================
+   Cards
+========================================= */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.8rem;
+}
+
+.card {
+  background: #f7f3ee;
+  border-radius: 20px;
+
+  /* tighter padding */
+  padding: 1.2rem 1.4rem;
+
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.04);
+  transition: transform 180ms ease-out, box-shadow 180ms ease-out;
+}
+
+/* title movement on hover */
+.card__title {
+  position: relative;
+  z-index: 3; /* thumbnail 위로 유지 */
+  transition: transform 200ms ease-out;
+}
+
+.card--studio:hover .card__title {
+  transform: translateY(-15px); /* 타이틀 위로 살짝 올리기 */
+}
+
+.card__text {
+  line-height: 1.62;
+  margin-bottom: 1.2rem;
+  transition: opacity 170ms ease-out, transform 170ms ease-out;
+}
+
+.card__cta {
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: none;
+  background: #ffffff;
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================================
+   Personal Studio Site — PREMIUM HOVER
+========================================= */
+
+.card--studio {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  padding-top: 1rem;
+  padding-bottom: 1.3rem;
+}
+
+.card--studio:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+.card--studio:hover .card__text,
+.card--studio:hover .card__cta {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+
+.card__preview {
+  position: absolute;
+  left: 1.4rem;
+  right: 1.4rem;
+  top: 3.4rem;
+  bottom: 1.4rem;
+
+  border-radius: 14px;
+  overflow: hidden;
+
+  opacity: 0;
+  transform: translateY(8px);
+  transition: 
+    opacity 300ms ease-out,
+    transform 300ms cubic-bezier(0.22, 0.61, 0.36, 1); /* smooth slide-up */
+
+  z-index: 2;
+}
+
+.card--studio:hover .card__preview {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card__preview-image {
+  width: 100%;
+  height: 100%;
+
+  /* 🎬 Warm + cinematic gradient overlay */
+  background-image:
+    linear-gradient(
+      to top,
+      rgba(255, 214, 160, 0.18),   /* warm amber bottom */
+      rgba(255, 235, 210, 0.08),   /* soft warm highlight */
+      rgba(0, 0, 0, 0.04)          /* subtle depth */
+    ),
+    url("/mxcii-thumb.png");
+
+  background-size: cover;
+  background-position: center top;
+
+  /* 🎨 Warm cinematic tone */
+  opacity: 1;
+  filter:
+    brightness(1.03)
+    contrast(1.04)
+    saturate(1.12)
+    sepia(0.08);   /* ✨ warm tone의 핵심 */
+
+  transition:
+    filter 450ms ease-out,
+    opacity 450ms ease-out;
+}
+
+/* 🎥 On Hover — premium cinematic highlight */
+.card--studio:hover .card__preview-image {
+  filter:
+    brightness(1.10)
+    contrast(1.10)
+    saturate(1.18)
+    sepia(0.14);
+}
+
+/* ABOUT 전체 래퍼 */
+.about {
+  padding: 6rem 0;
+}
+
+/* 타이틀(ABOUT + divider)을 그리드 밖에 둠 */
+.about__header {
+  max-width: 1100px;
+  margin: 0 auto 3rem;   /* 아래로 spacing */
+  padding: 0 6vw;
+}
+
+/* ABOUT GRID (텍스트 왼쪽, 이미지 오른쪽) */
+.about__grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 6vw;
+
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+/* 왼쪽 텍스트 */
+.about__col--left {
+  max-width: 460px;
+}
+
+/* 오른쪽 이미지 */
+.about__image {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.about__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 모바일 */
+@media (max-width: 900px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about__col--left {
+    max-width: none;
+  }
+
+  .about__image {
+    height: 260px;
+  }
+}
+
+/* ================================
+   CONNECT SECTION LAYOUT
+================================ */
+
+.section__inner--split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+
+/* ================================
+   CONNECT FORM FIELDS
+================================ */
+
+.connect-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  max-width: 480px;
+}
+
+.connect-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.connect-form__field span {
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: #6F685F;            /* 한 톤 더 선명한 taupe */
+  font-weight: 500;
+}
+
+.connect-form__field input,
+.connect-form__field textarea {
+  padding: 0.85rem 1rem;
+  border-radius: 6px;
+
+  border: 1px solid #7D766E;               /* 더 진하고 분명한 tone */
+  background: rgba(255, 255, 255, 0.6);
+  color: #514C46;                           /* 더 읽기 좋은 텍스트 */
+
+  font-size: 0.9rem;
+  transition:
+    border-color 200ms ease,
+    background-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.connect-form__field input:focus,
+.connect-form__field textarea:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.75);
+  border-color: #5E5852;
+  box-shadow: 0 0 0 3px rgba(94, 88, 82, 0.18);
+}
+
+
+/* ================================
+   SUBMIT BUTTON
+================================ */
+
+.connect-form__submit {
+  align-self: flex-start;
+  padding: 0.85rem 2.4rem;
+
+  border-radius: 999px;
+
+  background: transparent;
+  border: 1px solid #6F685F;     /* 텍스트 색과 맞추기 */
+  color: #6F685F;
+
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    background-color 1100ms cubic-bezier(0.25, 0.8, 0.25, 1),
+    color 1100ms cubic-bezier(0.25, 0.8, 0.25, 1),
+    border-color 1100ms cubic-bezier(0.25, 0.8, 0.25, 1),
+    transform 450ms ease-out,
+    box-shadow 900ms ease-out,
+    opacity 200ms ease-out;
+}
+
+.connect-form__submit:hover:not(:disabled) {
+  background-color: #6F685F;
+  color: #F7F5F1;
+  border-color: #6F685F;
+
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+}
+
+.connect-form__submit:active:not(:disabled) {
+  background-color: #5A544E;
+  border-color: #5A544E;
+  transform: translateY(0);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+.connect-form__submit:disabled {
+  opacity: 0.5;
+  cursor: default;
+  box-shadow: none;
+}
+
+
+/* ================================
+   STATUS MESSAGES
+================================ */
+
+.connect-form__status {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+.connect-form__status--ok {
+  color: #4A6F4F;
+}
+
+.connect-form__status--error {
+  color: #B04A4A;
+}
+
+/* =========================================
+   Footer
+========================================= */
+
+.footer {
+  padding: 1.8rem 6vw 2.2rem;
+  font-size: 0.8rem;
+  color: #8b837b;
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.footer__dot {
+  opacity: 0.6;
+}
+
+/* =========================================
+   Responsive
+========================================= */
+
+@media (max-width: 960px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .section__inner--split {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .header__nav {
+    display: none;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
