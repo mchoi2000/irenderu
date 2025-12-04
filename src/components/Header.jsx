@@ -11,10 +11,7 @@ function Header({ onNavClick }) {
   return (
     <header className="header">
       <div className="header__brand">
-        <span className="header__brand-main">i</span>
-        <span className="header__brand-sep">Render</span>
-        <span className="header__brand-main">U</span>
-        {/* <span className="header__brand-sub">You</span> */}
+        <span className="header__brand-main">Render & You</span>
       </div>
 
       <nav className="header__nav">
